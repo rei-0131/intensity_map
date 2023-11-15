@@ -11,7 +11,7 @@ import datetime as dt
 #command prompt
 #pip install folium && pip install geopy && pip install selenium
 
-img="C:\\Users\\REI\\Documents\\Programs\\earth_center.png"
+img="earth_center.png"
 color={"1":"#46646E","2":"#1E6EE6","3":"#00C8C8","4":"#FAFA64","5-":"#FFB400","5+":"#FF7800","6-":"#E60000","6+":"#A00000","7":"#960096"}
 icon_png = CustomIcon(
     icon_image = img,
@@ -111,6 +111,7 @@ for num in range(4371):
             fill=True,
             fill_color=a_now_color,
         ).add_to(map_c)
+    print(f"北緯:{lat} 東経:{lon} 名称:{stations['data'][num]['name']} 計測:{a_intensity}")
 sum_time = dt.datetime.now() - sum_time_be
 print(f"===============震度計算終了===============\n計算時間: {(sum_time.microseconds)/1000}ms")
 with open("sum_sindo_datas.txt","w") as f:
@@ -119,9 +120,9 @@ with open("sum_sindo_datas.txt","w") as f:
     for i in (range(len(sum_sindo_datas))):
         f.write(f"{sum_sindo_datas[i]}\n")
 
-map_c.save("C:\\Users\\REI\\Documents\\Programs\\inten.html")
+map_c.save("inten.html")
 # browser=webdriver.Chrome()
 # browser.maximize_window()
-# browser.get("C:\\Users\\REI\\Documents\\Programs\\inten.html")
+# browser.get("inten.html")
 # time.sleep(20)
 # browser.quit()
